@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquitectura e Infraestructura Crítica en Uruguay</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        pre { background-color: #1e293b; color: #e2e8f0; padding: 1.5rem; border-radius: 0.5rem; overflow-x: auto; font-size: 0.875rem; line-height: 1.5; }
+        code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        @media print { .no-print { display: none !important; } .print-full { width: 100% !important; max-width: none !important; margin-left: 0 !important; } }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { primary: '#0369a1', secondary: '#0f172a', accent: '#38bdf8' } } }
+        }
+    </script>
+</head>
+<body class="text-slate-800 antialiased flex flex-col md:flex-row min-h-screen">
+
+    <!-- Navegación Lateral -->
+    <aside class="w-full md:w-64 bg-secondary text-white md:fixed md:h-screen z-20 no-print flex flex-col shadow-xl">
+        <div class="p-6 border-b border-slate-700">
+            <h1 class="text-xl font-bold text-white leading-tight">Curso TI Uruguay</h1>
+            <p class="text-slate-400 text-sm mt-1">Marco Legal y Técnico</p>
+        </div>
+        <nav class="flex-1 overflow-y-auto p-4 space-y-1">
+            <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 mt-2 px-4">Módulo Arquitectura</p>
+            <a href="#modulo1" class="block py-2 px-4 text-sm rounded hover:bg-slate-800 transition">1. Contexto Legal (MCU)</a>
+            <a href="#modulo2" class="block py-2 px-4 text-sm rounded hover:bg-slate-800 transition">2. Arquitectura Híbrida</a>
+            <a href="#modulo3" class="block py-2 px-4 text-sm rounded hover:bg-slate-800 transition">3. IaC y Zero Trust</a>
+            <a href="#modulo4" class="block py-2 px-4 text-sm rounded hover:bg-slate-800 transition">4. Estándares Docs-as-Code</a>
+            <a href="#modulo5" class="block py-2 px-4 text-sm rounded hover:bg-slate-800 transition">5. Modelo ADR</a>
+            
+            <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 mt-6 px-4">Módulo Software</p>
+            <a href="iso25010.html" class="block py-2 px-4 text-sm rounded bg-primary hover:bg-sky-600 font-medium transition flex items-center gap-2">
+                Ir a Calidad y Estándares
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <main class="flex-1 md:ml-64 p-6 lg:p-12 print-full max-w-5xl mx-auto w-full">
+        <header id="inicio" class="mb-12 bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+            <div class="inline-block bg-sky-100 text-primary px-3 py-1 rounded-full text-sm font-semibold mb-4 border border-sky-200">
+                Módulo Arquitectura
+            </div>
+            <h1 class="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">Infraestructura Crítica y Seguridad en Uruguay</h1>
+            <p class="text-lg text-slate-600 leading-relaxed">
+                Mapeando la norma ISO/IEC 27010 con el Marco de Ciberseguridad de Uruguay (MCU), la Ley N° 18.331 y el despliegue de arquitecturas modernas.
+            </p>
+        </header>
+
+        <section id="modulo1" class="mb-16 scroll-mt-10">
+            <div class="flex items-center gap-3 mb-6 border-b pb-4">
+                <span class="bg-primary text-white w-8 h-8 flex items-center justify-center rounded-lg font-bold text-sm shadow-md">1</span>
+                <h2 class="text-2xl font-bold text-slate-800">El Contexto Uruguayo y Marco Legal</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                    <h3 class="text-lg font-bold text-primary mb-2">Marco de Ciberseguridad (MCU)</h3>
+                    <p class="text-slate-600 text-sm mb-4">Desarrollado por AGESIC, establece las bases para proteger los activos de información. Funciona en sintonía con la Plataforma de Interoperabilidad (PDI).</p>
+                    <ul class="list-disc pl-5 text-slate-600 space-y-1 text-sm">
+                        <li>Foco en resiliencia de infraestructura.</li>
+                        <li>Obligatoriedad de notificar al CERTuy.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                    <h3 class="text-lg font-bold text-primary mb-2">Ley N° 18.331 (Habeas Data)</h3>
+                    <p class="text-slate-600 text-sm mb-4">Regula el almacenamiento de datos personales. Exige <strong>soberanía de datos</strong> para información sensible (ej. historia clínica), limitando su alojamiento fuera de Uruguay sin garantías formales.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="modulo2" class="mb-16 scroll-mt-10">
+            <div class="flex items-center gap-3 mb-6 border-b pb-4">
+                <span class="bg-primary text-white w-8 h-8 flex items-center justify-center rounded-lg font-bold text-sm shadow-md">2</span>
+                <h2 class="text-2xl font-bold text-slate-800">Arquitecturas Híbridas y Soberanía</h2>
+            </div>
+            
+            <p class="text-slate-600 mb-6 text-sm">
+                La solución al dilema legal es una <strong>Cloud Híbrida</strong>. Mantenemos los datos sensibles (On-Premise) en territorio nacional y delegamos las capas de procesamiento sin estado a la nube pública.
+            </p>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 mb-6 overflow-x-auto">
+                <h3 class="text-center text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Topología Híbrida Ley 18.331</h3>
+                <pre class="mermaid flex justify-center bg-transparent p-0">
+graph TD
+    classDef cloud fill:#e0f2fe,stroke:#0284c7,stroke-width:2px;
+    classDef local fill:#dcfce7,stroke:#16a34a,stroke-width:2px;
+    classDef gov fill:#fef08a,stroke:#ca8a04,stroke-width:2px;
+    classDef database fill:#f3e8ff,stroke:#9333ea,stroke-width:2px;
+
+    User((Usuarios))
+
+    subgraph NubePublica [Nube Pública AWS/Azure]
+        WAF[WAF Web]
+        UI[Frontend]
+        MS[Microservicios Stateless]
+    end
+
+    subgraph DatacenterUY [Datacenter UY - Zona Ley 18.331]
+        API_GW[API Gateway - Zero Trust]
+        K8sLocal[Clúster K8s Local]
+        DB[(BD Datos Sensibles)]
+        Log[Logs Inmutables]
+    end
+
+    subgraph EcosistemaEstado [Ecosistema del Estado]
+        PDI[PDI AGESIC]
+        CERT[CERTuy]
+    end
+
+    User -->|HTTPS| WAF
+    WAF --> UI
+    UI --> MS
+    MS <-->|Túnel VPN / mTLS ISO 27010| API_GW
+    API_GW --> K8sLocal
+    K8sLocal --> DB
+    K8sLocal -.->|Auditoría| Log
+    API_GW <-->|Intercambio Cifrado| PDI
+    Log -.->|Alertas| CERT
+
+    class WAF,UI,MS cloud;
+    class API_GW,K8sLocal,Log local;
+    class PDI,CERT gov;
+    class DB database;
+                </pre>
+            </div>
+        </section>
+
+        <section id="modulo3" class="mb-16 scroll-mt-10">
+            <div class="flex items-center gap-3 mb-6 border-b pb-4">
+                <span class="bg-primary text-white w-8 h-8 flex items-center justify-center rounded-lg font-bold text-sm shadow-md">3</span>
+                <h2 class="text-2xl font-bold text-slate-800">Defensa en Profundidad: IaC y Zero Trust</h2>
+            </div>
+            
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-md font-bold text-slate-800 mb-2">1. Túnel Seguro (Terraform HCL)</h3>
+                    <p class="text-xs text-slate-500 mb-2">Conexión cifrada (ISO 27010) entre nube y Datacenter uruguayo.</p>
+                    <pre><code>resource "aws_customer_gateway" "datacenter_uruguay" {
+  bgp_asn    = 65000
+  ip_address = "200.40.X.X"
+  type       = "ipsec.1"
+  tags = { Compliance = "Ley-18331" }
+}
+
+resource "aws_vpn_connection" "tunel_hibrido" {
+  vpn_gateway_id      = aws_vpn_gateway.nube.id
+  customer_gateway_id = aws_customer_gateway.datacenter_uruguay.id
+  type                = "ipsec.1"
+  tunnel1_encryption_algorithms = ["AES256"]
+}</code></pre>
+                </div>
+
+                <div>
+                    <h3 class="text-md font-bold text-slate-800 mb-2">2. Micro-segmentación (Kubernetes YAML)</h3>
+                    <p class="text-xs text-slate-500 mb-2">Impide acceso directo a la BD desde componentes vulnerados.</p>
+                    <pre><code class="language-yaml">apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: aislar-bd-ciudadanos
+spec:
+  podSelector:
+    matchLabels:
+      app: base-datos-hcen
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: api-gateway-local # Solo confía en el API Gateway</code></pre>
+                </div>
+            </div>
+        </section>
+        
+        <section id="modulo5" class="mb-16 scroll-mt-10">
+            <div class="flex items-center gap-3 mb-6 border-b pb-4">
+                <span class="bg-primary text-white w-8 h-8 flex items-center justify-center rounded-lg font-bold text-sm shadow-md">5</span>
+                <h2 class="text-2xl font-bold text-slate-800">Plantilla ADR (Architecture Decision Record)</h2>
+            </div>
+            <p class="text-slate-600 mb-4 text-sm">
+                Usamos Docs-as-Code. Las decisiones deben registrarse en formato Markdown para las auditorías (ej. URCDP). Esta es la estructura profesional recomendada para justificar decisiones de infraestructura:
+            </p>
+            
+            <div class="bg-[#1e293b] rounded-xl shadow-xl border border-slate-700 p-6 overflow-x-auto text-sm font-mono leading-relaxed">
+                <div class="text-sky-400 font-bold mb-5">
+                    <span class="text-slate-500 font-normal mr-2">1</span> # ADR 0001: Despliegue de Base de Datos en Datacenter On-Premise (Uruguay)
+                </div>
+                
+                <div class="mb-5">
+                    <div class="text-emerald-400 font-bold"><span class="text-slate-500 font-normal mr-2">2</span> ## 1. Estado</div>
+                    <div class="text-slate-300"><span class="text-slate-500 font-normal mr-2">3</span> <span class="text-amber-400">**</span>Aceptado<span class="text-amber-400">**</span> | <span class="text-amber-400">**</span>Fecha:<span class="text-amber-400">**</span> 09-08-2026 | <span class="text-amber-400">**</span>Autores:<span class="text-amber-400">**</span> [Equipo DevOps]</div>
+                </div>
+
+                <div class="mb-5">
+                    <div class="text-emerald-400 font-bold"><span class="text-slate-500 font-normal mr-2">4</span> ## 2. Contexto (El Problema)</div>
+                    <div class="text-slate-300"><span class="text-slate-500 font-normal mr-2">5</span> El proyecto requiere almacenar información médica (PII). El equipo prefiere Amazon RDS por su escalabilidad. Sin embargo, la Ley N° 18.331 impone restricciones sobre la transferencia internacional de datos sensibles, requiriendo que permanezcan bajo soberanía nacional y estricto control.</div>
+                </div>
+
+                <div class="mb-5">
+                    <div class="text-emerald-400 font-bold"><span class="text-slate-500 font-normal mr-2">6</span> ## 3. Decisión</div>
+                    <div class="text-slate-300"><span class="text-slate-500 font-normal mr-2">7</span> Desplegaremos nube híbrida. La Base de Datos (PostgreSQL) se alojará en un clúster local (Datacenter de Antel, Pando). El Frontend se desplegará en AWS. La comunicación se realizará exclusivamente mediante un túnel VPN IPSec (AES-256) cumpliendo con la norma ISO 27010.</div>
+                </div>
+
+                <div>
+                    <div class="text-emerald-400 font-bold"><span class="text-slate-500 font-normal mr-2">8</span> ## 4. Consecuencias</div>
+                    <div class="text-slate-300"><span class="text-slate-500 font-normal mr-2">9</span></div>
+                    <div class="text-blue-400 font-bold"><span class="text-slate-500 font-normal mr-2">10</span> ### Positivas:</div>
+                    <div class="text-slate-300"><span class="text-slate-500 font-normal mr-2">11</span> <span class="text-blue-400 font-bold">*</span> Cumplimiento estricto del MCU y Ley 18.331.</div>
+                    <div class="text-slate-300"><span class="text-slate-500 font-normal mr-2">12</span> <span class="text-blue-400 font-bold">*</span> Aislamiento total de los datos sensibles (Zero Trust) ante posibles brechas en el frontend.</div>
+                    <div class="text-slate-300"><span class="text-slate-500 font-normal mr-2">13</span></div>
+                    <div class="text-red-400 font-bold"><span class="text-slate-500 font-normal mr-2">14</span> ### Negativas (Riesgos asumidos):</div>
+                    <div class="text-slate-300"><span class="text-slate-500 font-normal mr-2">15</span> <span class="text-red-400 font-bold">*</span> Mayor complejidad operativa (gestión de backups locales en lugar de AWS automatizado).</div>
+                    <div class="text-slate-300"><span class="text-slate-500 font-normal mr-2">16</span> <span class="text-red-400 font-bold">*</span> Latencia de red añadida (20-40ms) por el túnel VPN internacional.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navegación a Pág 2 -->
+        <div class="flex justify-end mt-12 border-t pt-8 no-print">
+            <a href="iso25010.html" class="bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-sky-700 transition flex items-center gap-2 shadow-lg">
+                Continuar al Módulo ISO 25010:2023
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+        </div>
+    </main>
+
+    <!-- Solución: Importar Mermaid como módulo ES fijo en la versión estable 11.4.0 -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#e0f2fe',
+                primaryTextColor: '#0f172a',
+                primaryBorderColor: '#0284c7',
+                lineColor: '#64748b'
+            }
+        });
+    </script>
+</body>
+</html>
